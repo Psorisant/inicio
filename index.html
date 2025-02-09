@@ -1,8 +1,9 @@
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Psorisant - Crema para el Cuerpo</title>
+    <title>Tienda Psorisant - Compra Online</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -24,6 +25,13 @@
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
+        }
+        .product {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 10px;
+            background: white;
         }
         img {
             max-width: 100%;
@@ -48,18 +56,21 @@
 </head>
 <body>
     <header>
-        Psorisant - Cuidado Natural para tu Piel
+        Tienda Psorisant - Compra tu crema ahora
     </header>
     <div class="container">
-        <h2>La mejor crema para tu piel</h2>
-        <p>Psorisant es una crema hidratante y reparadora, ideal para pieles sensibles y con tendencia a la resequedad.</p>
-        <img src="https://via.placeholder.com/600x300" alt="Imagen de la crema Psorisant">
-        <p>Nutre, protege y regenera tu piel con ingredientes naturales.</p>
-        <button class="btn" onclick="comprar()">Comprar Ahora</button>
+        <h2>Productos Disponibles</h2>
+        <div class="product">
+            <h3>Crema Psorisant</h3>
+            <img src="https://via.placeholder.com/300x200" alt="Crema Psorisant">
+            <p>Nutre, protege y regenera tu piel con ingredientes naturales.</p>
+            <p><strong>Precio: $19.99</strong></p>
+            <button class="btn" onclick="comprar()">Comprar Ahora</button>
+        </div>
     </div>
     <script>
         function comprar() {
-            alert("Gracias por tu interés en Psorisant. Pronto nos pondremos en contacto contigo.");
+            alert("Gracias por tu compra. Pronto recibirás un correo con los detalles de tu pedido.");
         }
     </script>
 </body>
