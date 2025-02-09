@@ -13,9 +13,19 @@
         }
         .navbar {
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between;
+            align-items: center;
             padding: 15px;
             position: relative;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+            width: 50px;
+            height: auto;
+            margin-right: 10px;
         }
         .menu-toggle {
             font-size: 24px;
@@ -64,15 +74,51 @@
             padding: 30px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
-            text-align: center;
         }
         .hidden {
             display: none;
+        }
+        .product-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .product-image {
+            width: 300px;
+            height: auto;
+            border-radius: 10px;
+        }
+        .product-info {
+            flex: 1;
+        }
+        .buy-button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #27ae60;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+        .buy-button:hover {
+            background-color: #219150;
+        }
+        .footer {
+            background-color: #2C3E50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
         }
     </style>
 </head>
 <body>
     <nav class="navbar">
+        <div class="logo">
+            <img src="https://via.placeholder.com/50" alt="Logo Psorisant">
+            <span>Tienda Psorisant</span>
+        </div>
         <button class="menu-toggle" onclick="toggleMenu()">☰</button>
         <div class="nav-container" id="nav-container">
             <a onclick="mostrarSeccion('inicio')">Inicio</a>
@@ -88,7 +134,13 @@
     
     <div id="inicio" class="container">
         <h2>Nuestros Productos</h2>
-        <p>Aquí va la información de los productos.</p>
+        <div class="product-container">
+            <img class="product-image" src="https://via.placeholder.com/300" alt="Imagen del producto">
+            <div class="product-info">
+                <p>Aquí va la información de los productos.</p>
+                <a class="buy-button" href="https://ibague.gov.co/portal/index.php#gsc.tab=0" target="_blank">Comprar</a>
+            </div>
+        </div>
     </div>
     
     <div id="faq" class="container hidden">
@@ -105,6 +157,14 @@
         <h2>Testimonios</h2>
         <p>Aquí irán los testimonios de nuestros clientes.</p>
     </div>
+    
+    <footer class="footer">
+        <p>Contáctanos: contacto@psorisant.com</p>
+        <p>Teléfono: +123 456 7890</p>
+        <p>Dirección: Calle Falsa 123, Ciudad, País</p>
+        <p>Horarios de atención: Lunes a Viernes de 9:00 AM - 6:00 PM</p>
+        <p>&copy; 2025 Tienda Psorisant - Todos los derechos reservados</p>
+    </footer>
     
     <script>
         function toggleMenu() {
