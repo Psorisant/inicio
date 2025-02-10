@@ -3,181 +3,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda Psorisant - Compra Online</title>
+    <title>Tienda PsoriSant</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #f8f8f8;
         }
-        .navbar {
+        header {
+            background-color: #fff;
+            padding: 10px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px;
-            position: relative;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-        .logo {
+        nav {
             display: flex;
-            align-items: center;
-        }
-        .logo img {
-            width: 50px;
-            height: auto;
-            margin-right: 10px;
-        }
-        .menu-toggle {
-            font-size: 24px;
-            background: none;
-            border: none;
-            color: black;
-            cursor: pointer;
-        }
-        .nav-container {
-            display: none;
-            position: absolute;
-            top: 50px;
-            right: 0;
-            background-color: #2C3E50;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        .nav-container a {
-            display: block;
-            padding: 10px 15px;
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-            transition: background 0.3s;
-            cursor: pointer;
-        }
-        .nav-container a:hover {
-            background-color: #34495E;
-        }
-        .show {
-            display: block;
-        }
-        header {
-            background-color: #2C3E50;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            font-size: 28px;
-            font-weight: bold;
-            margin-top: 20px;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 40px auto;
-            background: white;
-            padding: 30px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-        }
-        .hidden {
-            display: none;
-        }
-        .product-container {
-            display: flex;
-            align-items: center;
             gap: 20px;
         }
-        .product-image {
-            width: 200px;
-            height: auto;
-            border-radius: 10px;
-        }
-        .product-info {
-            flex: 1;
-        }
-        .buy-button {
-            display: inline-block;
-            padding: 10px 20px;
-            margin-top: 20px;
-            background-color: #27ae60;
-            color: white;
+        nav a {
             text-decoration: none;
-            font-size: 18px;
-            border-radius: 5px;
+            color: #333;
+            font-weight: bold;
         }
-        .buy-button:hover {
-            background-color: #219150;
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 300px;
+            height: 300px;
+            margin: 20px auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-        .footer {
-            background-color: #2C3E50;
-            color: white;
-            text-align: center;
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .carousel img {
+            width: 100%;
+            flex-shrink: 0;
+        }
+        .indicators {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 5px;
+        }
+        .indicator {
+            width: 10px;
+            height: 10px;
+            background-color: #bbb;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .indicator.active {
+            background-color: #333;
+        }
+        .contenedor-productos {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
             padding: 20px;
-            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        .producto {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 200px;
+        }
+        footer {
+            background-color: #f8f8f8;
+            padding: 20px;
+            font-size: 14px;
+            color: #333;
+            border-top: 1px solid #ddd;
+            margin-top: 20px;
+        }
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        .footer-links a {
+            text-decoration: none;
+            color: #666;
+        }
+        .footer-links a:hover {
+            text-decoration: underline;
+            color: #000;
+        }
+        .footer-text {
+            text-align: center;
+            font-size: 12px;
+            color: #777;
         }
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="logo">
-            <img src="https://via.placeholder.com/50" alt="Logo Psorisant">
-            <span>Tienda Psorisant</span>
-        </div>
-        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-        <div class="nav-container" id="nav-container">
-            <a onclick="mostrarSeccion('inicio')">Inicio</a>
-            <a onclick="mostrarSeccion('faq')">Preguntas Frecuentes</a>
-            <a onclick="mostrarSeccion('ubicacion')">Ubicación</a>
-            <a onclick="mostrarSeccion('testimonios')">Testimonios</a>
-        </div>
-    </nav>
-    
     <header>
-        Tienda Psorisant - Compra tu crema ahora
+        <h1>Tienda PsoriSant</h1>
+        <nav>
+            <a href="#">Inicio</a>
+            <a href="#">Preguntas Frecuentes</a>
+            <a href="#">Ubicación</a>
+            <a href="#">Métodos de pago</a>
+        </nav>
     </header>
     
-    <div id="inicio" class="container">
-        <h2>Nuestros Productos</h2>
-        <div class="product-container">
-            <img class="product-image" src="https://i.ibb.co/Y5y1y4D/Whats-App-Image-2025-02-09-at-6-22-20-PM.jpg" alt="Imagen del producto">
-            <div class="product-info">
-                <p>Aquí va la información de los productos.</p>
-                <a class="buy-button" href="https://ibague.gov.co/portal/index.php#gsc.tab=0" target="_blank">Comprar</a>
-            </div>
+    <div class="carousel-container">
+        <div class="carousel">
+            <img src="123.png" alt="Imagen 1">
+            <img src="imagen2.jpg" alt="Imagen 2">
+            <img src="imagen3.jpg" alt="Imagen 3">
+        </div>
+        <div class="indicators">
+            <div class="indicator active" onclick="moveToSlide(0)"></div>
+            <div class="indicator" onclick="moveToSlide(1)"></div>
+            <div class="indicator" onclick="moveToSlide(2)"></div>
         </div>
     </div>
-    
-    <div id="faq" class="container hidden">
-        <h2>Preguntas Frecuentes</h2>
-        <p>Aquí irán las preguntas frecuentes.</p>
-    </div>
-    
-    <div id="ubicacion" class="container hidden">
-        <h2>Ubicación</h2>
-        <p>Aquí irá la información de ubicación.</p>
-    </div>
-    
-    <div id="testimonios" class="container hidden">
-        <h2>Testimonios</h2>
-        <p>Aquí irán los testimonios de nuestros clientes.</p>
-    </div>
-    
-    <footer class="footer">
-        <p>Contáctanos: psorisant@gmail.com</p>
-        <p>Teléfono: +57 314 736 4893</p>
-        <p>Dirección: Calle XXX, Ibagué, Tolima</p>
-        <p>Horarios de atención: Lunes a Viernes de 9:00 AM - 6:00 PM</p>
-        <p>&copy; 2025 Tienda Psorisant - Todos los derechos reservados</p>
+
+    <section class="contenedor-productos">
+        <div class="producto">
+            <img src="producto1.jpg" alt="Producto 1" width="100%">
+            <p>Producto 1</p>
+            <p>$32.100</p>
+        </div>
+        <div class="producto">
+            <img src="producto2.jpg" alt="Producto 2" width="100%">
+            <p>Producto 2</p>
+            <p>$39.100</p>
+        </div>
+        <div class="producto">
+            <img src="producto3.jpg" alt="Producto 3" width="100%">
+            <p>Producto 3</p>
+            <p>$72.200</p>
+        </div>
+        <div class="producto">
+            <img src="producto4.jpg" alt="Producto 4" width="100%">
+            <p>Producto 4</p>
+            <p>$54.100</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#">Términos y condiciones</a>
+            <a href="#">Promociones</a>
+            <a href="#">Cómo cuidamos tu privacidad</a>
+            <a href="#">Accesibilidad</a>
+            <a href="#">Ayuda</a>
+        </div>
+        <div class="footer-text">
+            <p>Contáctanos + 57</p>
+            <p>Copyright © Tienda PsoriSant</p>
+            <p>Carrera 17 Número 93 - 09 Piso 3, Ibagué, Tolima</p>
+        </div>
     </footer>
-    
+
     <script>
-        function toggleMenu() {
-            document.getElementById('nav-container').classList.toggle('show');
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".carousel img");
+        const indicators = document.querySelectorAll(".indicator");
+
+        function moveToSlide(slideIndex) {
+            currentSlide = slideIndex;
+            const offset = -currentSlide * 100;
+            document.querySelector(".carousel").style.transform = `translateX(${offset}%)`;
+            updateIndicators();
         }
-        
-        function mostrarSeccion(seccion) {
-            document.querySelectorAll('.container').forEach(div => {
-                div.classList.add('hidden');
+
+        function updateIndicators() {
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle("active", index === currentSlide);
             });
-            document.getElementById(seccion).classList.remove('hidden');
-            document.getElementById('nav-container').classList.remove('show');
         }
+
+        function autoSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            moveToSlide(currentSlide);
+        }
+
+        setInterval(autoSlide, 3000);
     </script>
+
 </body>
 </html>
