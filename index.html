@@ -19,50 +19,53 @@
             align-items: center;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-        nav {
-            display: flex;
-            gap: 20px;
-        }
-        nav a {
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
-        }
-        .carousel-container {
+        .carrito {
             position: relative;
-            width: 100%;
-            max-width: 300px;
-            height: 300px;
-            margin: 20px auto;
-            overflow: hidden;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        .carousel {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        }
-        .carousel img {
-            width: 100%;
-            flex-shrink: 0;
-        }
-        .indicators {
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 5px;
-        }
-        .indicator {
-            width: 10px;
-            height: 10px;
-            background-color: #bbb;
-            border-radius: 50%;
             cursor: pointer;
+            font-size: 24px;
         }
-        .indicator.active {
-            background-color: #333;
+        .carrito span {
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            background-color: red;
+            color: white;
+            font-size: 12px;
+            padding: 2px 5px;
+            border-radius: 50%;
+            display: none;
+        }
+        .menu-carrito {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 250px;
+            height: 100%;
+            background: white;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            transition: right 0.3s ease-in-out;
+        }
+        .menu-carrito.active {
+            right: 0;
+        }
+        .btn-carrito {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .btn-comprar {
+            background: #25D366;
+            color: white;
+        }
+        .btn-cerrar {
+            background: red;
+            color: white;
         }
         .contenedor-productos {
             display: flex;
@@ -79,6 +82,15 @@
             text-align: center;
             width: 200px;
         }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
         footer {
             background-color: #f8f8f8;
             padding: 20px;
@@ -86,115 +98,92 @@
             color: #333;
             border-top: 1px solid #ddd;
             margin-top: 20px;
-        }
-        .footer-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            justify-content: center;
-            margin-bottom: 10px;
-        }
-        .footer-links a {
-            text-decoration: none;
-            color: #666;
-        }
-        .footer-links a:hover {
-            text-decoration: underline;
-            color: #000;
-        }
-        .footer-text {
             text-align: center;
-            font-size: 12px;
-            color: #777;
         }
     </style>
 </head>
 <body>
     <header>
         <h1>Tienda PsoriSant</h1>
-        <nav>
-            <a href="#">Inicio</a>
-            <a href="#">Preguntas Frecuentes</a>
-            <a href="#">Ubicación</a>
-            <a href="#">Métodos de pago</a>
-        </nav>
+        <div class="carrito" onclick="toggleCarrito()">
+            🛒 <span id="contador-carrito">0</span>
+        </div>
     </header>
-    
-    <div class="carousel-container">
-        <div class="carousel">
-            <img src="123.png" alt="Imagen 1">
-            <img src="imagen2.jpg" alt="Imagen 2">
-            <img src="imagen3.jpg" alt="Imagen 3">
-        </div>
-        <div class="indicators">
-            <div class="indicator active" onclick="moveToSlide(0)"></div>
-            <div class="indicator" onclick="moveToSlide(1)"></div>
-            <div class="indicator" onclick="moveToSlide(2)"></div>
-        </div>
-    </div>
 
     <section class="contenedor-productos">
         <div class="producto">
             <img src="producto1.jpg" alt="Producto 1" width="100%">
             <p>Producto 1</p>
             <p>$32.100</p>
+            <button onclick="agregarAlCarrito('Producto 1', 32100)">Comprar</button>
         </div>
         <div class="producto">
             <img src="producto2.jpg" alt="Producto 2" width="100%">
             <p>Producto 2</p>
             <p>$39.100</p>
-        </div>
-        <div class="producto">
-            <img src="producto3.jpg" alt="Producto 3" width="100%">
-            <p>Producto 3</p>
-            <p>$72.200</p>
-        </div>
-        <div class="producto">
-            <img src="producto4.jpg" alt="Producto 4" width="100%">
-            <p>Producto 4</p>
-            <p>$54.100</p>
+            <button onclick="agregarAlCarrito('Producto 2', 39100)">Comprar</button>
         </div>
     </section>
 
+    <div class="menu-carrito" id="menuCarrito">
+        <h2>Carrito de Compras</h2>
+        <ul id="lista-carrito"></ul>
+        <button class="btn-carrito btn-comprar" onclick="comprarPorWhatsApp()">Comprar</button>
+        <button class="btn-carrito btn-cerrar" onclick="toggleCarrito()">Cerrar</button>
+    </div>
+
     <footer>
-        <div class="footer-links">
-            <a href="#">Términos y condiciones</a>
-            <a href="#">Promociones</a>
-            <a href="#">Cómo cuidamos tu privacidad</a>
-            <a href="#">Accesibilidad</a>
-            <a href="#">Ayuda</a>
-        </div>
-        <div class="footer-text">
-            <p>Contáctanos + 57</p>
-            <p>Copyright © Tienda PsoriSant</p>
-            <p>Carrera 17 Número 93 - 09 Piso 3, Ibagué, Tolima</p>
-        </div>
+        <p>Contáctanos + 57</p>
+        <p>Copyright © Tienda PsoriSant</p>
+        <p>Carrera 17 Número 93 - 09 Piso 3, Ibagué, Tolima</p>
     </footer>
 
     <script>
-        let currentSlide = 0;
-        const slides = document.querySelectorAll(".carousel img");
-        const indicators = document.querySelectorAll(".indicator");
+        let carrito = {};
+        let contadorCarrito = document.getElementById("contador-carrito");
+        let menuCarrito = document.getElementById("menuCarrito");
 
-        function moveToSlide(slideIndex) {
-            currentSlide = slideIndex;
-            const offset = -currentSlide * 100;
-            document.querySelector(".carousel").style.transform = `translateX(${offset}%)`;
-            updateIndicators();
+        function agregarAlCarrito(nombre, precio) {
+            if (carrito[nombre]) {
+                carrito[nombre].cantidad++;
+            } else {
+                carrito[nombre] = { cantidad: 1, precio };
+            }
+            actualizarCarrito();
         }
 
-        function updateIndicators() {
-            indicators.forEach((indicator, index) => {
-                indicator.classList.toggle("active", index === currentSlide);
+        function actualizarCarrito() {
+            let lista = document.getElementById("lista-carrito");
+            lista.innerHTML = "";
+            let total = 0;
+
+            Object.keys(carrito).forEach(producto => {
+                let item = carrito[producto];
+                total += item.cantidad;
+                let li = document.createElement("li");
+                li.textContent = `${producto} x${item.cantidad}`;
+                lista.appendChild(li);
             });
+
+            contadorCarrito.textContent = total;
+            contadorCarrito.style.display = total > 0 ? "inline" : "none";
         }
 
-        function autoSlide() {
-            currentSlide = (currentSlide + 1) % slides.length;
-            moveToSlide(currentSlide);
+        function toggleCarrito() {
+            menuCarrito.classList.toggle("active");
         }
 
-        setInterval(autoSlide, 3000);
+        function comprarPorWhatsApp() {
+            let totalProductos = Object.values(carrito).reduce((acc, item) => acc + item.cantidad, 0);
+            if (totalProductos === 0) {
+                alert("Tu carrito está vacío.");
+                return;
+            }
+            let mensaje = `Hola! Estoy interesado en adquirir ${totalProductos} producto(s).`;
+            let numeroWhatsApp = "573143882446"; // Reemplaza con tu número de WhatsApp
+            let url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+            window.open(url, "_blank");
+        }
     </script>
 
 </body>
